@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign in page</title>
+</head>
+<body>
+    <form method = "POST" action="/sign/login_post/">
+        {% csrf_token %}
+        Username:
+        <br>
+        <input type="text" name = 'user_id'>
+        <br>
+        Password:
+        <br>
+        <input type="password" name = 'user_pw'>
+        <br>
+        <input type="submit">
+    </form>
+    <script src = "http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        //$('[type="submit"]').click(function(){
+            $("[name=user_id").blur(() =>{
+            $.ajax({
+                type: 'POST',
+                url: '/sign/login_post/',
+                data: $('form').serialize(),
+                // {
+                //      'user_id':$('[name = user_id]').val(),
+                //     'user_pw':$('[name = user_pw]').val(),
+                //  },
+                success: function(res) {
+                    console.log(res);
+                }
+            })
+
+        })
+    </script>
+</body>
+</html>
