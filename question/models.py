@@ -1,5 +1,5 @@
-from django.db import models
 from __future__ import unicode_literals
+from django.db import models
 from .fields import ThumbnailImageField
 
 # Create your models here.
@@ -15,7 +15,7 @@ class Board(models.Model):
 
 class AttFile(models.Model):
   attfile_id = models.AutoField(primary_key=True)
-  board = models.ForeignKey(Board)
+  board = models.ForeignKey(Board, on_delete=models.CASCADE)
   image = ThumbnailImageField(upload_to='board/image/%y/%m', default=None, null=True, blank=True)
   regDate = models.DateTimeField('date register', auto_now_add= True)
 
