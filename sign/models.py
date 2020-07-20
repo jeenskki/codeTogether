@@ -10,6 +10,7 @@ class User(models.Model):
     birth = models.IntegerField(length=6)
     user_type = models.IntegerField(max_length=255)
     
+    
  
     def __str__(self):
         return self.name + str(self.age)
