@@ -6,7 +6,7 @@
     <title>sign in page</title>
 </head>
 <body>
-    <form method = "POST" action="/sign/login_post/">
+    <form method = "POST" >
         {% csrf_token %}
         Username:
         <br>
@@ -20,11 +20,11 @@
     </form>
     <script src = "http://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
-        //$('[type="submit"]').click(function(){
-            $("[name=user_id").blur(() =>{
+        $('[type="submit"]').click(function(){
+            // $("[name=user_id").click(() =>{
             $.ajax({
                 type: 'POST',
-                url: '/sign/login_post/',
+                url: '/sign/login/',
                 data: $('form').serialize(),
                 // {
                 //      'user_id':$('[name = user_id]').val(),
