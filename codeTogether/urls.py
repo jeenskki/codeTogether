@@ -18,11 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-<<<<<<< HEAD
-    path('signup_mentee/', views.signup_mentee),
-    path('signup_mentor/', views.signup_mentor),
-=======
     path('sign/', include('sign.urls')),
     path('', include('main.urls'))
->>>>>>> 070bb3431ca157d51865756716d5eabf4575ec03
 ]
