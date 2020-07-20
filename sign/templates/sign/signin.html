@@ -6,24 +6,24 @@
     <title>sign in page</title>
 </head>
 <body>
-    <form method = "POST" action="/sign/login_post/">
+    <form method = "POST" action="/sign/login/">
         {% csrf_token %}
         ID:
         <br>
-        <input type="text" name = 'user_id'>
+        <input type="char" name = 'user_id' maxlength="20">
         <br>
         Password:
         <br>
-        <input type="password" name = 'user_pw'>
+        <input type="password" name = 'user_pw' maxlength="20">
         <br>
         <input type="submit">
     </form>
-    <script src = "http://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script>
+    <!-- <script src = "http://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+    <!-- <script>
             $("[name=user_id").blur(() =>{
             $.ajax({
                 type: 'POST',
-                url: '/sign/login_post/',
+                url: '/sign/login/',
                 data: $('form').serialize(),
                 success: function(res) {
                     console.log(res);
@@ -31,6 +31,6 @@
             })
 
         })
-    </script>
+    </script> -->
 </body>
 </html>
