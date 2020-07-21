@@ -25,13 +25,18 @@
             $.ajax({
                 type: 'POST',
                 url: '/sign/login/',
-                data: $('form').serialize(),
-                // {
-                //      'user_id':$('[name = user_id]').val(),
-                //     'user_pw':$('[name = user_pw]').val(),
-                //  },
-                success: function(res) {
-                    console.log(res);
+                data:{
+                    'user_id':$('[name = user_id]').val(),
+                    'user_pw':$('[name = user_pw]').val(),
+                    },
+                success: function(res){
+                    if(res==0 | user_type == 1){
+                        location.href="/answer/index"
+                    }
+                    else{
+                        alert("아이디 혹은 비밀번호를 확인해주세요.")
+                    }
+                    
                 }
             })
 
