@@ -15,7 +15,7 @@ class Accounts(models.Model):
         db_table = "accounts"
     
     def __str__(self):
-        return self.use_id + ' / ' + self.email
+        return self.user_id + ' / ' + self.email
 
 class t_list(models.Model):
     table_id = models.AutoField('table_id', primary_key=True)

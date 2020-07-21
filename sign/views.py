@@ -15,7 +15,7 @@ def regist_user(request):
         user_id = request.POST['user_id']
         user_pw = request.POST['user_pw']
         user_name = request.POST['user_name']
-        user_email = request.POST['user_email']
+        user_email = request.POST['email']
         user_type = request.POST['user_type']
 
         try:
@@ -69,14 +69,13 @@ def login_chk(request):
     if request.method == 'POST':
         user_id = request.POST['user_id']
         user_pw = request.POST['user_pw']
-
         if Accounts.objects.filter(user_id=user_id).exists():
-            if user_pw == Accounts.objects.filter(user_id=user_id).user_pw:
-                user.type = Accounts.objects.filter(user_id=user_id).user_type
+            if user_pw == Accounts.objects.get(user_id=user_id).user_pw :
+                user_type = Accounts.objects.get(user_id=user_id).user_type
                 save_session(request, user_id, user_type)
-                return render(request, '/main.html')
+                return render(request, 'main/index.html')
             else:
-                return JsonResponse({'error':"패스워드가 올바르지 않습니다."}, status=400)
+                return JsonResponse({'error':"Incorrect Password."}, status=400)
         else:
             return JsonResponse({'error': "아이디가 없습니다."}, status=400)
 
@@ -96,6 +95,6 @@ def login_chk(request):
 def login(request):
     return render(request, 'sign/signin.html')
 
-def save_session(requset, user_id, user_type):
+def save_session(request, user_id, user_type):
     request.session['user_id'] = user_id
     request.session['user_type'] = user_type
