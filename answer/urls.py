@@ -21,7 +21,8 @@ from . import views
 
 urlpatterns = [
     path('index/',views.index),
-    path('anslist/',views.anslist),
+    path('answerlist/',views.anslist),
+    
 ]
 
 
