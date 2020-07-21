@@ -12,7 +12,7 @@ class Accounts(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
-        db_table = "acoounts"
+        db_table = "Accounts"
     
     def __str__(self):
         return self.use_id + ' / ' + self.email

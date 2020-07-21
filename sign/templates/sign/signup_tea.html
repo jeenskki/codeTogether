@@ -10,9 +10,9 @@
     <form method = "POST" action = "/sign/regist_user/">
         {% csrf_token %}
         <br>
-        이름 :
+        아이디 :
         <br>
-        <input type="text" name = 'user_id' placeholder ="홍길동">
+        <input type="text" name = 'user_id' placeholder ="아이디">
         <br>
         비밀번호 :
         <br>
@@ -21,6 +21,10 @@
         비밀번호 확인 :
         <br>
         <input type="password" name = 're_user_pw' placeholder ="비밀번호 확인">
+        <br>
+        이름 :
+        <br>
+        <input type="text" name = 'user_name' placeholder ="이름">
         <br>
         이메일 : 
         <br>
@@ -31,7 +35,7 @@
         <input type="date" name = 'birthday'>
         <input type="hidden" name = 'user_type' value={{user_type}}>
         <br>
-        <input type="submit" value = "가입">
+        <input type="submit" value = "가입하기">
     </form>   
 </body>
 </html>

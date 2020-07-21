@@ -1,21 +1,18 @@
 from django.db import models
-
+from sign.models import Accounts
 # Create your models here.
-class questionBoard(models.Model):
+class Board(models.Model):
+  content_id = models.AutoField('content_id', primary_key=True)
+  account_id = models.ForeignKey(Accounts, on_delete=models.CASCADE)
   title = models.CharField(max_length=100)
-  content = models.CharField(max_length=1000)
-  pub_date = models.DateTimeField('date published')
-  img = models.ImageField(default=None, null= True, blank= True)
-  author_name = models.CharField(max_length=20)
+  content = models.TextField(max_length=2000)
+  img = models.ImageField(upload_to='./ans_img/% Y/% m/% d/', blank=True)
+  pub_date = models.DateTimeField(auto_now_add=True)
+  mod_date = models.DateTimeField(auto_now=True)
+  content_type = models.IntegerField(default=0)
+
+  class Meta:
+    db_table = 'board'
 
   def __str__(self):
-    return self.title / self.pub_date
-
-class answerBoard(models.Model):
-  q_id = models.ForeignKey(questionBoard.id, on_delete=models.CASCADE)
-  atitle = models.CharField(max_length=100)
-  a_content = models.CharField(max_length=1000)
-  a_pub_date = models.DateTimeField('date published')
-  a_img = models.ImageField(default=None, null=True, blank=True)
-  author_name = models.CharField(max_length=20)
-    
+    return self.title + ' / ' + self.pub_date

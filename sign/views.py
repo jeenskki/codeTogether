@@ -21,7 +21,7 @@ def regist_user(request):
 
     if user_pw == re_user_pw:
         try:
-            if User.objects.filter(user_id = user_id).exists() :
+            if Accounts.objects.filter(user_id = user_id).exists() :
                 return JsonResponse({"message" : "USER_ALREADY_EXIST"}, status = 401)
             Accounts(
                 user_id=user_id,
@@ -46,18 +46,36 @@ def get_stu(request):
 #로그인 기능
 
 def login_chk(request):
-    user_id = request.POST.get('user_id')
-    user_pw = request.POST.get('user_pw')
-    try:
-        if Accounts.objects.filter(user_id = user_id).exists() :
-            if user_pw == Accounts.objects.get(user_id=user_id).user_pw:
-                user_type = User.objects.get(user_id).user_type
-                return HttpResponse('0')
-            return HttpResponse('1')
-        return HttpResponse('2')
-    except KeyError:
-        return JsonResponse({'message' : "INVALID_KEYS"}, status = 400)
+    if request.method == 'POST':
+        user_id = request.POST['user_id']
+        user_pw = request.POST['user_pw']
+
+        if Accounts.objects.filter(user_id=user_id).exists():
+            if user_pw == Accounts.objects.filter(user_id=user_id).user_pw:
+                user.type = Accounts.objects.filter(user_id=user_id).user_type
+                save_session(request, user_id, user_type)
+                return render(request, '/main.html')
+            else:
+                return JsonResponse({'error':"패스워드가 올바르지 않습니다."}, status=400)
+        else:
+            return JsonResponse({'error': "아이디가 없습니다."}, status=400)
+
+    # user_id = request.POST.get('user_id')
+    # user_pw = request.POST.get('user_pw')
+    # try:
+    #     if Accounts.objects.filter(user_id = user_id).exists() :
+    #         if user_pw == Accounts.objects.get(user_id=user_id).user_pw:
+    #             user_type = User.objects.get(user_id).user_type
+    #             return HttpResponse('0')
+    #         return HttpResponse('1')
+    #     return HttpResponse('2')
+    # except KeyError:
+    #     return JsonResponse({'message' : "INVALID_KEYS"}, status = 400)
     
     # return HttpResponse(user_id)
 def login(request):
     return render(request, 'sign/signin.html')
+
+def save_session(requset, user_id, user_type):
+    request.session['user_id'] = user_id
+    request.session['user_type'] = user_type
