@@ -19,8 +19,8 @@ def regist_user(request):
     user_type = int(request.POST.get('user_type'))
     if user_pw == re_user_pw:
         try:
-             if Accounts.objects.filter(user_id = user_id).exists() :
-                 return JsonResponse({"message" : "USER_ALREADY_EXIST"}, status = 401)
+            if Accounts.objects.filter(user_id = user_id).exists() :
+                return JsonResponse({"message" : "USER_ALREADY_EXIST"}, status = 401)
             Accounts(
                 user_id=user_id,
                 user_pw=user_pw,
