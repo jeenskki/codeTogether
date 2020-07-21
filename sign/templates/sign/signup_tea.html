@@ -1,4 +1,4 @@
-<h1>회원가입</h1>
+<h1>회원가입 선생</h1>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +10,11 @@
     <form method = "POST" action = "/sign/regist_user/">
         {% csrf_token %}
         <br>
+<<<<<<< HEAD
         아이디 :
+=======
+        ID :
+>>>>>>> ff8f807cd90c81182d5556fa65b03ba196bf1bf7
         <br>
         <input type="text" name = 'user_id' placeholder ="아이디">
         <br>
@@ -24,18 +28,28 @@
         <br>
         이름 :
         <br>
+<<<<<<< HEAD
         <input type="text" name = 'user_name' placeholder ="이름">
+=======
+        <input type="text" name = 'user_name' placeholder ="홍길동">
+>>>>>>> ff8f807cd90c81182d5556fa65b03ba196bf1bf7
         <br>
         이메일 : 
         <br>
         <input type="email" name = 'email' placeholder ="codeTo@codeTo.com">
         <br>
-        생년월일 :
+        <!-- 생년월일 :
         <br>
         <input type="date" name = 'birthday'>
+        
+        <br> -->
         <input type="hidden" name = 'user_type' value={{user_type}}>
+<<<<<<< HEAD
         <br>
         <input type="submit" value = "가입하기">
+=======
+        <input type="submit" value = "가입">
+>>>>>>> ff8f807cd90c81182d5556fa65b03ba196bf1bf7
     </form>   
 </body>
 </html>

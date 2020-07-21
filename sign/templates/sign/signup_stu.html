@@ -1,37 +1,57 @@
-<h1>회원가입</h1>
+<h1>회원가입 학생</h1>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sign up page</title>
+    <style>
+        #alert {
+            color : red;
+            font-style: bold;
+        }
+    </style>
 </head>
 <body>
     <form method = "POST" action="/sign/regist_user/">
         {% csrf_token %}
         <br>
-        이름 :
+        ID :
         <br>
-        <input type="text" name = 'user_id' placeholder ="홍길동">
+        <input type="text" name = 'user_id' placeholder ="codeTogether">
         <br>
         비밀번호 :
         <br>
-        <input type="password" name = 'user_pw' placeholder ="비밀번호">
+        <input type="password" name = 'user_pw' placeholder ="비밀번호" id='pw'>
         <br>
         비밀번호 확인 :
         <br>
-        <input type="password" name = 're_user_pw' placeholder ="비밀번호 확인">
+        <input type="password" name = 're_user_pw' placeholder ="비밀번호 확인" id='chk_pw'>
+        <div id="alert"></div>
+        <br>
+        이름 :
+        <br>
+        <input type="text" name = 'user_name' placeholder ="홍길동">
         <br>
         이메일 : 
         <br>
         <input type="email" name = 'email' placeholder ="codeTo@codeTo.com">
         <br>
-        생년월일 :
+        <!-- 생년월일 :
         <br>
         <input type="date" name = 'birthday'>
+        
+        <br> -->
         <input type="hidden" name = 'user_type' value={{user_type}}>
-        <br>
         <input type="submit" value = "가입">
-    </form>   
+    </form>
+    <script>
+        let pw = document.getElementById('pw')
+        let chk_pw = document.getElementById('chk_pw')
+        let alert = document.getElementById('alert')
+        if(pw != chk_pw) {
+            alert.innerHTML = '비밀번호가 일치하지 않습니다.'
+        }
+    </script>
 </body>
 </html>
