@@ -16,12 +16,12 @@
         <br>
         비밀번호 :
         <br>
-        <input type="password" name = 'user_pw' placeholder ="비밀번호">
+        <input type="password" name = 'user_pw' id='pw'>
         <br>
         비밀번호 확인 :
         <br>
-        <input type="password" name = 're_user_pw' placeholder ="비밀번호 확인">
-        <br>
+        <input type="password" name = 're_user_pw' id='chk_pw'>
+        <div id="alert"></div>
         이름 :
         <br>
         <input type="text" name = 'user_name' placeholder ="홍길동">
@@ -36,7 +36,26 @@
         
         <br> -->
         <input type="hidden" name = 'user_type' value={{user_type}}>
-        <input type="submit" value = "가입">
-    </form>   
+        <input type="submit" value = "가입" id='submit'>
+    </form>
+    <script>
+        let check = chk_pw.addEventListener('change', function(e) {
+            let pw = document.getElementById('pw')
+            let chk_pw = document.getElementById('chk_pw')
+            let alert = document.getElementById('alert')
+
+            if (pw.value == chk_pw.value) {
+                alert.innerHTML = "비밀번호가 일치합니다."
+                alert.style.color = 'green'
+                submit.disabled = false
+            } else {
+                alert.innerHTML = "비밀번호가 일치하지 않습니다"
+                alert.style.color = 'red'
+                submit.disabled = true
+            }
+        })
+        let btn = document.getElementById('submit')
+        
+    </script>
 </body>
 </html>

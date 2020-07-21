@@ -366,4 +366,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+
+*/__pycache__/*
+db.sqlite3
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,visualstudiocode,pycharm,django,python

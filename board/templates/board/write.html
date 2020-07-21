@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>새 글 쓰기</title>
+</head>
+<style>
+  #content {
+    resize: none;
+  }
+  #submit {
+    border-radius: 3px;
+    width: 100px;
+    height: 30px;
+    background-color: #acac1c;
+  }
+</style>
+<body>
+  <form method="post">
+  {% csrf_token %}
+    <p>제목 : <input type="text" name='title'></p>
+    본문<br><textarea name="content" id="content" cols="100" rows="30"></textarea><br>
+    <p>사진 : <input type="file" name="img"></p>
+    <button type="submit" id='submit'>작성하기</button>
+  </form>
+
+  <script src = "http://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $('button[type="submit"]').click((e) => {
+      $.ajax({
+        type: 'POST',
+        url: "/board/writeBoard/",
+        data: {
+          'title': $('[name = title]').val(),
+          'content': $('[name = content]').val(),
+          'img': $('[name = img]').val(),
+        },
+        success : (res) => {
+          if (res==0) {
+            alert("글이 등록되었습니다.")
+            location.href = "/board/list/"
+          } else {
+            alert("글이 등록되지 않았습니다.")
+          }
+        }
+      })
+    })
+  </script>
+</body>
+</html>
