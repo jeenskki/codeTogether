@@ -26,10 +26,15 @@ from .models import Answer,Blog
 #             return redirect('/board/list')
 
 #     return render(request, 'board_write.html', {'form' :form})
+# 선생님이 작성한 게시글 
+def answerdetail(request):
+    teacher_id=request.POST.get('teacher_id')
+    teacher_title=request.POST.get('teacher_title')
+    teacher_content=request.POST.get('teacher_content')
+    teacher_image=request.POST.get('teacher_image')
+    pub_date =request.POST.get('--------')
 
-
-def index(request):
-    
+def index(request):   
     return render(request,'answer/index.html')
     #템플릿 안에, 엔서 안에, 인덱스라서 이렇게 적음
 
