@@ -21,5 +21,6 @@ urlpatterns = [
     path('signup_stu/',views.get_stu),
     path('regist_user/',views.regist_user),
     path('login/', views.login), #선생/학생 코드시에 입력
-    path('loginchk/', views.login_chk)
+    path('login_chk/', views.login_chk),
+    path('signup_main/',views.index),
 ]
