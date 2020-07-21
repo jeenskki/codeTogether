@@ -10,9 +10,11 @@ class Board(models.Model):
   pub_date = models.DateTimeField(auto_now_add=True)
   mod_date = models.DateTimeField(auto_now=True)
   content_type = models.IntegerField(default=0)
+  reply_chk = models.IntegerField(default=0)
 
   class Meta:
     db_table = 'board'
 
   def __str__(self):
     return self.title + ' / ' + self.pub_date
+
