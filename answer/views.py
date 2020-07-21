@@ -28,8 +28,7 @@ from .models import Answer,Blog
 #     return render(request, 'board_write.html', {'form' :form})
 
 
-def index(request):
-    
+def index(request):   
     return render(request,'answer/index.html')
     #템플릿 안에, 엔서 안에, 인덱스라서 이렇게 적음
 

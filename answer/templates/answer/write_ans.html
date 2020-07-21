@@ -7,13 +7,7 @@
 </head>
 
 
-<!-- <button onclick="goBack()">질문 리스트로 돌아가기</button> -->
-<button onclick="window.location.href='http://127.0.0.1:8000/answer/anslist'">질문 리스트로 돌아가기</button>
-<!-- 홈으로 돌아가기 -->
-<button onclick="window.location.href='http://127.0.0.1:8000/'">HOME</button><br>
-
-
-
+<!-- 
 <form action="{%#%}" method="post">
     {% csrf_token %}
     ID :<input type="text" placeholder ="ID입력"></div><br>
@@ -22,19 +16,64 @@
     이미지 :<input type="image" placeholder ="이미지 첨부"></div><br>
     
 </div>
-</form>
+</form> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h3>Coding together</h3>
+</div>
+</div>
 
-<form id = "done" onsubmit="done();">
-    <input type="submit" value="답변 등록하기"><br>
-</form>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<ul class="navbar-nav">
+    <ul class="navbar-nav"></ul>
+        <a class="navbar-brand" href="window.location.href='http://127.0.0.1:8000/" class="btn btn-dark">HOME</a>
+        <li class="nav-item">
+            <a class="nav-link" href="window.location.href='http://127.0.0.1:8000/answer/anslist'">질문 리스트로 돌아가기</a>
+        </li>
+    </ul>
+    </nav>
+</body>
+</html>
 
+{% extends 'base.html' %}
+{% block content %}
+
+
+<!-- 
+<button class="btn btn-dark" onclick="window.location.href='http://127.0.0.1:8000/answer/anslist'">질문 리스트로 돌아가기</button>
+<button onclick="window.location.href='http://127.0.0.1:8000/'" class="btn btn-dark" >HOME</button><br> -->
+
+    <div class="container">
+        <hr>
+        <form action="{%#%}" method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+            ID :<input type="text" placeholder ="ID입력"></div><br>
+            설명 :<input type="text" placeholder ="설명"></div><br>
+            내용 :<input type="text" placeholder ="내용"></div><br>
+            이미지 :<input type="image" placeholder ="이미지 첨부"></div><br>
+        </form>
+        <form id = "done" onsubmit="done();">
+            <input type="submit" class="btn btn-light" value="답변 등록하기"/>
+        </form>
+    </div>
+{% endblock %}
+
+</form>
 
 <script>
-function goBack() {
-    window.history.back();
-}
-function done(){  
-    alert('답변이 등록되었습니다.')
-}
-
+    function goBack() {
+        window.history.back();
+    }
+    function done(){  
+        alert('답변이 등록되었습니다.')
+    }
+    
 </script>
