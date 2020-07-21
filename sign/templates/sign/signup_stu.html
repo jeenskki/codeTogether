@@ -7,7 +7,7 @@
     <title>sign up page</title>
 </head>
 <body>
-    <form method = "POST" >
+    <form method = "POST" action="/sign/regist_user/">
         {% csrf_token %}
         <br>
         이름 :
@@ -29,6 +29,7 @@
         생년월일 :
         <br>
         <input type="date" name = 'birthday'>
+        <input type="hidden" name = 'user_type' value={{user_type}}>
         <br>
         <input type="submit" value = "가입">
     </form>   
