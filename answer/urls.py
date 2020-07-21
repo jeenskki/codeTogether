@@ -22,7 +22,7 @@ from . import views
 urlpatterns = [
     path('index/',views.index),
     path('answerlist/',views.answerlist),
-    
+    path('answerdetail/',views.answerdetail)
 ]
 
 

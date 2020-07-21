@@ -51,17 +51,18 @@
 
     <div class="container">
         <hr>
-        <form action="{%#%}" method="post" enctype="multipart/form-data" >
+        <form method="post" enctype="multipart/form-data" action = "">
             {% csrf_token %}
             {{ form.media }}
             {{ form.as_p }}
-            ID :<input type="text" placeholder ="ID입력"></div><br>
-            설명 :<input type="text" placeholder ="설명"></div><br>
-            내용 :<input type="text" placeholder ="내용"></div><br>
-            이미지 :<input type="image" placeholder ="이미지 첨부"></div><br>
-        </form>
-        <form id = "done" onsubmit="done();">
+            ID :<input type="text" name ="teacher_id" placeholder ="ID입력"></div><br>
+            제목 :<input type="text" name ="teacher_title" placeholder ="설명"></div><br>
+            내용 :<input type="text" name ="teacher_content" placeholder ="내용"></div><br>
+            이미지 :<input type="image" name ="techer_image" placeholder ="이미지 첨부"></div><br>
+            id = "done" onsubmit="done();">
             <input type="submit" class="btn btn-light" value="답변 등록하기"/>
+        </form>
+        <form 
         </form>
     </div>
 {% endblock %}
