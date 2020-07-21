@@ -1,10 +1,10 @@
 from django.db import models
 from django.utils import timezone
-from sign.models import User
+from sign.models import Accounts
 
 # Create your models here.
 class Answer(models.Model):
-    author = models.ForeignKey('User', on_delete=models.CASCADE)
+    author = models.ForeignKey('Accounts', on_delete=models.CASCADE)
     #유저이름 확인 필요
     title = models.CharField(max_length=200)
     text = models.TextField()
