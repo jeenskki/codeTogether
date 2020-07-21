@@ -12,7 +12,7 @@ class Accounts(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
-        db_table = "acoounts"
+        db_table = "accounts"
     
     def __str__(self):
         return self.use_id + ' / ' + self.email
@@ -27,4 +27,4 @@ class t_list(models.Model):
         db_table = 't_list'
     
     def __str__(self):
-        return self.table_id + ' / ' + self.user_name
+        return self.table_id + ' / ' + self.account
