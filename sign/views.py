@@ -16,23 +16,19 @@ def regist_user(request):
     re_user_pw = request.POST.get('re_user_pw')
     user_name = request.POST.get('user_name')
     user_email = request.POST.get('email')
-    birth = request.POST.get('birth')
-    user_type = int(request.POST.get('user_type')) #user_type을 signup_ 페이지에서 설정후에 가져와야하는데 어떻게 넣어주지
-
+    user_type = int(request.POST.get('user_type'))
     if user_pw == re_user_pw:
         try:
-            if User.objects.filter(user_id = user_id).exists() :
-                return JsonResponse({"message" : "USER_ALREADY_EXIST"}, status = 401)
+             if Accounts.objects.filter(user_id = user_id).exists() :
+                 return JsonResponse({"message" : "USER_ALREADY_EXIST"}, status = 401)
             Accounts(
                 user_id=user_id,
-                # email=email,
                 user_pw=user_pw,
                 user_name =user_name,
                 email = user_email,
-                birth=birth,
                 user_type=user_type
             ).save()
-            return HttpResponse(status = 200)
+            return render(request, 'main/index.html')
         except KeyError:
             return JsonResponse({'message' : "INVALID_KEYS"}, status = 400)
     else: HttpResponse("비밀번호 틀림")
