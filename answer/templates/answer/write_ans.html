@@ -1,0 +1,40 @@
+<!-- 답변 올리는 페이지 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+<!-- <button onclick="goBack()">질문 리스트로 돌아가기</button> -->
+<button onclick="window.location.href='http://127.0.0.1:8000/answer/anslist'">질문 리스트로 돌아가기</button>
+<!-- 홈으로 돌아가기 -->
+<button onclick="window.location.href='http://127.0.0.1:8000/'">HOME</button><br>
+
+
+
+<form action="{%#%}" method="post">
+    {% csrf_token %}
+    ID :<input type="text" placeholder ="ID입력"></div><br>
+    설명 :<input type="text" placeholder ="설명"></div><br>
+    내용 :<input type="text" placeholder ="내용"></div><br>
+    이미지 :<input type="image" placeholder ="이미지 첨부"></div><br>
+    
+</div>
+</form>
+
+<form id = "done" onsubmit="done();">
+    <input type="submit" value="답변 등록하기"><br>
+</form>
+
+
+<script>
+function goBack() {
+    window.history.back();
+}
+function done(){  
+    alert('답변이 등록되었습니다.')
+}
+
+</script>
