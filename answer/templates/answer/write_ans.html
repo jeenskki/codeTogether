@@ -1,0 +1,27 @@
+<!-- 답변 올리는 페이지 -->
+<form method="POST" action="">
+
+</form>
+<button onclick="goBack()">질문 리스트로 돌아가기</button>
+<button onclick="window.location.href='http://127.0.0.1:8000/'">HOME</button><br>
+
+<label for="id">ID입력: </label>
+<input id="id" type="text" name="name_field" ><br>
+
+<label for="title">제목: </label>
+<input id="title" type="text" name="name_field"><br>
+
+<label for="ans">내용 입력: </label>
+<input id="ans" type="text" name="name_field" ><br>
+
+<label for="upload_image">이미지 업로드: </label>
+<input id="upload_image" type="text" name="name_field"><br>
+
+<input type="submit" value="답변 등록하기"><br>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
