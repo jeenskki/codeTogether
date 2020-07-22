@@ -4,77 +4,90 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-</head>
+<p>
 
 
-<!-- 
-<form action="{%#%}" method="post">
-    {% csrf_token %}
-    ID :<input type="text" placeholder ="ID입력"></div><br>
-    설명 :<input type="text" placeholder ="설명"></div><br>
-    내용 :<input type="text" placeholder ="내용"></div><br>
-    이미지 :<input type="image" placeholder ="이미지 첨부"></div><br>
-    
-</div>
-</form> -->
+</p>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<style>
+    tr > th {
+        text-align : center;
+    }
+    nav {
+        height: 50px;
+        width: 1080px;
+        margin-left:15px;
+
+    
+    }
+</style>
 </head>
 <body>
 <div class="container">
-<h3>Coding together</h3>
-</div>
-</div>
-
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 <ul class="navbar-nav">
     <ul class="navbar-nav"></ul>
-        <a class="navbar-brand" href="window.location.href='http://127.0.0.1:8000/" class="btn btn-dark">HOME</a>
-        <li class="nav-item">
-            <a class="nav-link" href="window.location.href='http://127.0.0.1:8000/answer/anslist'">질문 리스트로 돌아가기</a>
-        </li>
+        <a class="navbar-brand" href="window.location.href='http://127.0.0.1:8000/" class="btn btn-dark"><h4>Coding Together</h4></a>
     </ul>
-    </nav>
+</nav>
+
+<div class="col-md-12">
+    <p></p>
+</div>
+
+<!-- ddd-->
+
+<div class="container">
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <th>제목 </th>
+            <td><input type="text" name="title" placeholder="제목을 입력하세요."  class="form-control" id='title'/></td>
+        </tr>
+        <tr>
+            <th>내용 </th>
+            <td><textarea cols="10" rows='13' placeholder="내용을 입력하세요. " name="content" class="form-control" id='text'></textarea></td>
+        </tr>
+        <tr>
+            <th>첨부파일 </th>
+            <td><input type="file" name="filename" class="form-control"/></td>
+        </tr>
+            <td colspan="2" class="text-right">
+                <button class="btn btn-dark" id='submit'>답변 등록</button>
+                <button class="btn btn-dark" onclick"#">글 목록으로 돌아가기</button>
+                <!-- <input type="button" value="답변 등록" onclick="sendData()" class="btn btn-dark"/> -->
+                <!-- <input type="button" value="글 목록으로 돌아가기 " class="btn btn-dark" onclick="javascript:location.href=''"/> -->
+                <!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
+                <a class="btn btn-default" type="reset"> reset </a>
+                <a class="btn btn-default" onclick="javascript:location.href='list.jsp'">글 목록으로...</a> -->
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
 </body>
 </html>
 
-{% extends 'base.html' %}
-{% block content %}
-
-
-<!-- 
-<button class="btn btn-dark" onclick="window.location.href='http://127.0.0.1:8000/answer/anslist'">질문 리스트로 돌아가기</button>
-<button onclick="window.location.href='http://127.0.0.1:8000/'" class="btn btn-dark" >HOME</button><br> -->
-
-    <div class="container">
-        <hr>
-        <form method="post" enctype="multipart/form-data" action = "">
-            {% csrf_token %}
-            {{ form.media }}
-            {{ form.as_p }}
-            ID :<input type="text" name ="teacher_id" placeholder ="ID입력"></div><br>
-            제목 :<input type="text" name ="teacher_title" placeholder ="설명"></div><br>
-            내용 :<input type="text" name ="teacher_content" placeholder ="내용"></div><br>
-            이미지 :<input type="image" name ="techer_image" placeholder ="이미지 첨부"></div><br>
-            id = "done" onsubmit="done();">
-            <input type="submit" class="btn btn-light" value="답변 등록하기"/>
-        </form>
-        <form 
-        </form>
-    </div>
-{% endblock %}
-
-</form>
-
 <script>
-    function goBack() {
+    function goBack(){
         window.history.back();
     }
-    function done(){  
-        alert('답변이 등록되었습니다.')
-    }
-    
+    // submit이라는 id를 click했을 때 발생하는 이벤트 함수
+    $('#submit').click((e) => {
+        console.log();
+    })
+// function sendData(){
+//         var title = ans_board.title.value;
+//         var content = ans_board.content.value;
+        
+//         if(!title || !content){
+//             alert("내용을 모두 입력해주세요.")
+//         }else{
+//             loginForm.submit();
+//         }
+//     }
 </script>

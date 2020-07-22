@@ -21,7 +21,6 @@ class t_list(models.Model):
     table_id = models.AutoField('table_id', primary_key=True)
     account = models.ForeignKey(Accounts, on_delete=models.CASCADE)
     field_main = models.CharField(max_length=20)
-    field_sub = models.CharField(max_length=20)
 
     class Meta:
         db_table = 't_list'

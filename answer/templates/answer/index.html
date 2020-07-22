@@ -16,8 +16,17 @@
     .fakeimg {
       height: 150px;
       background: #aaa;
+
+    }
+    .card {
+      opacity: 0.6;
+      transition: opacity 0.3s ease-in;
+    } 
+    .card:hover {
+      opacity: 1;
     }
     </style>
+
   </head>
   <body>
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -55,30 +64,27 @@
 </head>
 <body>
 <pre>
-
-
 </pre>
+<br>
 <div class="container">
-  <div class="card" style="float:left;margin:50px;width:400px" >
+  <div class="card" style="float:left;margin:40px;width:420px;height: 440px;" >
     <img class="card-img-top" src="codingimage.jpg" alt="Card image" style="width:100%">
     <div class="card-body">
-      <h4 class="card-title">Coding together</h4>
-      <p class="card-text">코딩투게더 홈페이지로 이동 합니다.</p>
-      <a href="http://127.0.0.1:8000/" class="btn btn-primary stretched-link, btn btn-dark"">&nbsp&nbspHome&nbsp&nbsp</a>
+      <h4 class="card-title"  >Go back to the main</h4>
+      <p class="card-text" style ="line-height: 7% ; color: rgb(102, 102, 102);"><h7>코딩투게더 홈페이지로 이동 합니다.</h7></p><br>
+      <a href="http://127.0.0.1:8000/" class="stretched-link"></a>
     </div>
   </div>
 </div>
 
 
 <div class="container">
-  <div class="card" style="float:right;margin:50px;width:400px" display: flex; flex-direction: row;>
+  <div class="card" style="float:right;margin:40px;width:420px;height: 440px;" display= "flex; flex-direction: row;">
     <img class="card-img-top" src="keyboard.jpg" alt="Card image" style="width:100%">
     <div class="card-body">
-      <h4 class="card-title">Coding together</h4>
-      <p class="card-text">답변하기를 눌러 아이들의 질문에 답해주세요.</p>
-      <a href="http://127.0.0.1:8000/answer/anslist" class="btn btn-primary stretched-link, btn btn-dark"">답변하기</a>
+      <h4 class="card-title">Answer the questions now</h4>
+      <p class="card-text" style ="line-height: 7% ; color: rgb(102, 102, 102);" ><h7>아이들의 질문에 답해주세요.<h7></p><br>
+      <a href="http://127.0.0.1:8000/answer/anslist" class="stretched-link"></a>
     </div>
   </div>
 </div>
-</body>
-</html>
