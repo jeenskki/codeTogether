@@ -1,6 +1,6 @@
 import json
 from django.shortcuts import render
-from .models import Accounts
+from .models import Accounts, t_list
 from django.http import JsonResponse, HttpResponse
 from django.views import View
 
@@ -17,38 +17,32 @@ def regist_user(request):
         user_name = request.POST['user_name']
         user_email = request.POST['email']
         user_type = request.POST['user_type']
-
+        if request.POST.get('field_main'): #signup_stu는 field_main이 없으므로
+            field_main = request.POST['field_main']
         try:
-<<<<<<< HEAD
-            if Accounts.objects.filter(user_id = user_id).exists() :
-                return JsonResponse({"message" : "USER_ALREADY_EXIST"}, status = 401)
-            Accounts(
-                user_id=user_id,
-                user_pw=user_pw,
-                user_name =user_name,
-                email = user_email,
-                user_type=user_type
-            ).save()
-            return render(request, 'main/index.html')
-        except KeyError:
-            return JsonResponse({'message' : "INVALID_KEYS"}, status = 400)
-    else: HttpResponse("비밀번호 틀림")
-#get 방식으로 요청시 db에 있는 데이터와 함게 
-=======
-            if Accounts.objects.filter(user_id=user_id) == user_id:
+            if Accounts.objects.filter(user_id=user_id).exists():
                 return JsonResponse({"error": "이미 존재하는 아이디입니다."}, status = 401)
             else:
-                Accounts(
+                account = Accounts(
                     user_id = user_id,
                     user_pw = user_pw,
                     user_name = user_name,
                     email = user_email,
                     user_type = user_type,
-                ).save()
+                )
+                account.save()
+
+                if field_main:
+                    t_list(
+                        account = account,
+                        field_main = field_main 
+                    ).save()
                 return render(request, 'main/index.html')
         except KeyError or Exception as e:
             return JsonResponse({"error": "Invalid Keys"}, status = 400)
-            
+        
+
+
 
 #     user_id = request.POST.get('user_id')
 #     user_pw = request.POST.get('user_pw')
@@ -73,7 +67,6 @@ def regist_user(request):
 #     else: HttpResponse("비밀번호 틀림")
 # #get 방식으로 요청시 db에 있는 데이터와 함게 
 
->>>>>>> b41c27207b4ce0b926c7b538500c789ad0a1dc4b
 def get_tea(request):
     return render(request,'sign/signup_tea.html',{'user_type':1})
 
