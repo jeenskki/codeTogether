@@ -81,6 +81,15 @@ p {
   top: 0;
   background-color: rgba(0, 0, 0, .3);
 }
+.header-area {
+  position: relative;
+  height: 100vh;
+  background-image: url("/static/main/assets/img/main1.jpg");
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repear;
+  background-size: cover;
+}
 
 .banner {
   display: flex;
