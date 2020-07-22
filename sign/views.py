@@ -1,6 +1,6 @@
 import json
 from django.shortcuts import render
-from .models import Accounts
+from .models import Accounts, t_list
 from django.http import JsonResponse, HttpResponse
 from django.views import View
 
@@ -17,22 +17,32 @@ def regist_user(request):
         user_name = request.POST['user_name']
         user_email = request.POST['email']
         user_type = request.POST['user_type']
-
+        if request.POST.get('field_main'): #signup_stu는 field_main이 없으므로
+            field_main = request.POST['field_main']
         try:
             if Accounts.objects.filter(user_id=user_id).exists():
                 return JsonResponse({"error": "이미 존재하는 아이디입니다."}, status = 401)
             else:
-                Accounts(
+                account = Accounts(
                     user_id = user_id,
                     user_pw = user_pw,
                     user_name = user_name,
                     email = user_email,
                     user_type = user_type,
-                ).save()
+                )
+                account.save()
+
+                if field_main:
+                    t_list(
+                        account = account,
+                        field_main = field_main 
+                    ).save()
                 return render(request, 'main/index.html')
         except KeyError or Exception as e:
             return JsonResponse({"error": "Invalid Keys"}, status = 400)
-            
+        
+
+
 
 #     user_id = request.POST.get('user_id')
 #     user_pw = request.POST.get('user_pw')
