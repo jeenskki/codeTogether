@@ -4,4 +4,5 @@ from . import views
 
 urlpatterns = [
     path('write/', views.write),
+    path('', views.boardView),
 ]

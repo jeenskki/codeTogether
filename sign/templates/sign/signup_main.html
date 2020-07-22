@@ -8,7 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="/sign/static/sign/assets/css/signup_main.css">
+  <link rel="stylesheet" href="/static/sign/assets/css/signup_main.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
@@ -45,7 +45,7 @@
     <div class="row" style="width: 75%; margin: auto;">
       <div class="col-md-6">
         <div class="card text-center" style="width: 400px; margin:auto;" id="stu">
-          <img src="/sign/static/sign/assets/img/student.jpg" alt="kids" class="card-img-top"
+          <img src="/static/sign/assets/img/student.jpg" alt="kids" class="card-img-top"
           style="height: 370px;">
           <div class="card-body">
             <h3 class="card-title">학생이신가요?</h3>
@@ -56,7 +56,7 @@
       </div>
       <div class="col-md-6">
         <div class="card text-center" style="width: 400px; margin:auto" id="teach">
-          <img src="/sign/static/sign/assets/img/teacher.jpg" alt="teacher" class="card-img-top"
+          <img src="/static/sign/assets/img/teacher.jpg" alt="teacher" class="card-img-top"
           style="height: 370px;">
           <div class="card-body">
             <h3 class="card-title">교사이신가요?</h3>
@@ -70,6 +70,9 @@
   <script>
     $('#stu').click((e) => {
       location.href = '/sign/signup_stu'
+    })
+    $('#teach').click((e) => {
+      location.href = '/sign/signup_tea'
     })
   </script>
 </body>

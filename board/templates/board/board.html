@@ -12,6 +12,18 @@
     #contents {
       border-radius: 3px;
     }
+    #write {
+      background-color : gray;
+      border-radius: 3px;
+      width: 120px;
+      transition: background-color 0.3s ease-in;
+    }
+    #write:hover {
+      background-color: lightgray;
+    }
+    table {
+      font-size: 1em;
+    }
   </style>
 </head>
 <body>
@@ -39,34 +51,55 @@
   </div>
 
   <div class="container-fluid text-center">
-    <div class="col-md-10" style="margin: auto;">
+    <div class="col-md-8" style="margin: auto;">
       <div id="board_name"></div>
-      <table class="table table-hover table-bordered" id="contents">
+      <table class="table table-hover " id="contents">
         <thead class="table-sm">
           <th width="8%">번호</th>
-          <th width="60%">제목</th>
-          <th width="20%">글쓴이</th>
+          <th width="55%">제목</th>
+          <th width="25%">글쓴이</th>
           <th width="12%">게시일</th>
         </thead>
-        <tr>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
-          <td>4</td>
-        </tr>
+          <!-- tr, td는 백엔드에서 받아서 뿌려주기 -->
       </table>
+      <button type="button" class="btn float-right" id="write">글쓰기</button>
     </div>
   </div>
   <script>
     $(document).ready(() => {
+      function addContent() {
+        $('#contents').append(`
+          {% for c in b_list %}
+            {%if c.content_type == {{ session.user_type }} %}
+              <tr>
+                <td> {{ c.content_id }} </td>
+                <td> {{ c.title }} </td>
+                <td> {{ c.account.user_id }} </td>
+                <td> {{ c.pub_date }} </td>
+              </tr>
+            {% endif %}
+          {% endfor %} `)
+      }
       if('{{ session.user_type == 0 }}') {
         $('#board_name').html(`
           <h3> 내가 올린 질문 </h3> <br>
         `)
+        addContent()
       } else if ('{{ session.user_type == 1 }}') {
         $('#board_name').html(`
           <h3> 답변 대기 중인 질문 </h3> <br>
         `)
+        $('#contents').append(`
+          {% for c in b_list %}
+            {%if {{ session.user_type }} != c.reply_chk %}
+              <tr>
+                <td> {{ c.content_id }} </td>
+                <td> {{ c.title }} </td>
+                <td> {{ c.account.user_id }} </td>
+                <td> {{ c.pub_date }} </td>
+              </tr>
+            {% endif %}
+          {% endfor %} `)
       } else if ('{{ session.user_type = null }}') {
         alert("로그인 후 이용 바랍니다.")
         loation.href = 'sign/signin/'
@@ -74,6 +107,7 @@
         $('#board_name').html(`
           <h3> 관리자용 공지사항 페이지 </h3> <br>
         `)
+        addContent()
       }
       $('#user_type').html('<h4> {{ session.user_id }} 님 환영합니다. </h4>')
     })
