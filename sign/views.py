@@ -1,7 +1,7 @@
 import json
 from django.shortcuts import render
 from .models import Accounts, t_list
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.views import View
 
 def index(request):
@@ -19,6 +19,8 @@ def regist_user(request):
         user_type = request.POST['user_type']
         if request.POST.get('field_main'): #signup_stu는 field_main이 없으므로
             field_main = request.POST['field_main']
+        else:
+            field_main = False
         try:
             if Accounts.objects.filter(user_id=user_id).exists():
                 return JsonResponse({"error": "이미 존재하는 아이디입니다."}, status = 401)
@@ -83,7 +85,7 @@ def login_chk(request):
             if user_pw == Accounts.objects.get(user_id=user_id).user_pw :
                 user_type = Accounts.objects.get(user_id=user_id).user_type
                 save_session(request, user_id, user_type)
-                return HttpResponseRedirect('answer/index/')
+                return HttpResponseRedirect('/board/')
             else:
                 return JsonResponse({'error':"Incorrect Password."}, status=400)
         else:

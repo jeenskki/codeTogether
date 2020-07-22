@@ -21,4 +21,5 @@ from django.urls import path, include
 urlpatterns = [
     # path('/', views.main),
     path('', views.main),
+    path('logout/', views.logout),
 ]

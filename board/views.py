@@ -30,7 +30,7 @@ def writeBoard(request):
     return JsonResponse({"message": "오류 발생"}, status = 400)
 
 def boardView(request) :
-  c_list = Board.objects.order_by('-content_id')
+  b_list = Board.objects.order_by('-content_id')
   return render(request, 'board/board.html', {
     'b_list': b_list,
   })
