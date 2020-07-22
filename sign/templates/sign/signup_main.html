@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
 		<div class="container-fluid">
-			<a href="" class="navbar-brand">Coding Together</a>
+			<a href="/" class="navbar-brand">Coding Together</a>
 			<!-- /main/index.html -->
 			<button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#main-nav">
 				<span class="menu-icon-bar"></span>
@@ -38,31 +38,39 @@
   <div class="jumbotron text-center" style="height: 200px;">
     <div class="container">
       <h1 style="vertical-align: bottom;">회원가입</h1>
+      <p>Coding Together의 여정을 함께해요</p>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card text-center" style="width: 400px; margin:auto;">
-        <img src="/sign/static/sign/assets/img/student.jpg" alt="kids" class="card-img-top"
-         style="height: 370px;">
-        <div class="card-body">
-          <h3 class="card-title">학생이신가요?</h3>
-          <p class="card-text">교육을 원하는 학생은 여기로 가입하세요</p>
-          <a href="/sign/signup_stu" class="btn btn-primary">학생 가입</a>
+  <div class="container-fluid">
+    <div class="row" style="width: 75%; margin: auto;">
+      <div class="col-md-6">
+        <div class="card text-center" style="width: 400px; margin:auto;" id="stu">
+          <img src="/sign/static/sign/assets/img/student.jpg" alt="kids" class="card-img-top"
+          style="height: 370px;">
+          <div class="card-body">
+            <h3 class="card-title">학생이신가요?</h3>
+            <br>
+            <p class="card-text">교육을 원하는 학생은 여기로 가입하세요</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card text-center" style="width: 400px; margin:auto" id="teach">
+          <img src="/sign/static/sign/assets/img/teacher.jpg" alt="teacher" class="card-img-top"
+          style="height: 370px;">
+          <div class="card-body">
+            <h3 class="card-title">교사이신가요?</h3>
+            <br>
+            <p class="card-text">학생을 가르치면서 크레딧을 얻으세요!</p>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="card text-center" style="width: 400px; margin:auto">
-        <img src="/sign/static/sign/assets/img/teacher.jpg" alt="teacher" class="card-img-top"
-         style="height: 370px;">
-        <div class="card-body">
-          <h3 class="card-title">교사이신가요?</h3>
-          <p class="card-text">학생을 가르치면서 크레딧을 얻으세요!</p>
-          <a href="/sign/signup_tea" class="btn btn-primary">교사 가입</a>
-        </div>
-      </div>
-    </div>
   </div>
+  <script>
+    $('#stu').click((e) => {
+      location.href = '/sign/signup_stu'
+    })
+  </script>
 </body>
 </html>
