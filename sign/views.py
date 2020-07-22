@@ -83,7 +83,7 @@ def login_chk(request):
             if user_pw == Accounts.objects.get(user_id=user_id).user_pw :
                 user_type = Accounts.objects.get(user_id=user_id).user_type
                 save_session(request, user_id, user_type)
-                return render(request, 'main/index.html')
+                return HttpResponseRedirect('answer/index/')
             else:
                 return JsonResponse({'error':"Incorrect Password."}, status=400)
         else:

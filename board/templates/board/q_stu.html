@@ -21,34 +21,60 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
-        let lang = document.getElementById(lang)
-        let teacher = document.getElementById(teacher)
-        lang.addEventListener('change', function(e) {
-            if(lang.value == 'java') {
-                teacher.innerHTML += `
+        $('#lang').change((e) => {
+            if( $('#lang').val() == 'java') {
+                $('#language').html(`
                 {% for t in t_list %}
                     {% if t.field_main == 'java' %}
                         <div id="teacher_list">
                             <h3>교사명 : {{t.user_name}}</h3>
                             <p>전문 분야 : {{t.field_main}}</p>
                         </div>   
-                    {% endif %}                 
+                    {% endif %}
                 {% endfor %}
-                `
+                `)
             }
-            if(lang.value == 'python') {
-                teacher.innerHTML += `
+            if( $('#lang').val() == 'python') {
+                $('#language').html(`
                 {% for t in t_list %}
-                    {% if t.field_main == 'python' %}
+                    {% if t.field_main == 'java' %}
                         <div id="teacher_list">
                             <h3>교사명 : {{t.user_name}}</h3>
                             <p>전문 분야 : {{t.field_main}}</p>
                         </div>   
-                    {% endif %}                 
+                    {% endif %}
                 {% endfor %}
-                `
+                `)
             }
         })
+        // let lang = document.getElementById(lang)
+        // let teacher = document.getElementById(teacher)
+        // lang.addEventListener('change', function(e) {
+        //     if(lang.value == 'java') {
+        //         teacher.innerHTML += `
+        //         {% for t in t_list %}
+        //             {% if t.field_main == 'java' %}
+        //                 <div id="teacher_list">
+        //                     <h3>교사명 : {{t.user_name}}</h3>
+        //                     <p>전문 분야 : {{t.field_main}}</p>
+        //                 </div>   
+        //             {% endif %}                 
+        //         {% endfor %}
+        //         `
+        //     }
+        //     if(lang.value == 'python') {
+        //         teacher.innerHTML += `
+        //         {% for t in t_list %}
+        //             {% if t.field_main == 'python' %}
+        //                 <div id="teacher_list">
+        //                     <h3>교사명 : {{t.user_name}}</h3>
+        //                     <p>전문 분야 : {{t.field_main}}</p>
+        //                 </div>   
+        //             {% endif %}                 
+        //         {% endfor %}
+        //         `
+        //     }
+        // })
     </script>
 </body>
 </html>
