@@ -82,7 +82,8 @@ img { max-width: 100%; }
 /***** Top content *****/
 
 .inner-bg {
-    padding: 100px 0 170px 0;
+	padding: 100px 0 170px 0;
+	background-image: url('../img/1.jpg');
 }
 
 .top-content .text {
@@ -164,6 +165,16 @@ img { max-width: 100%; }
 	margin-top: 25px;
 }
 
+.topbanner {
+	/* position: relative;
+	height: 100vh; */
+	background-image: url("/static/sign/assets/img/1.jpg");
+
+	background-attachment: fixed;
+	background-position: center center;
+	background-repeat: no-repear;
+	background-size: cover;
+}
 
 /***** Media queries *****/
 
