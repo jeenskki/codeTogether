@@ -4,28 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="../../static/board/assets/fonts/material-icon/css/material-design-iconic-font.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/board/assets/css/board.css">
+  <link rel="stylesheet" href="fonts.googleapis.com/earlyaccess/jejugothic.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <style>
-    #contents {
-      font-size: 1rem;
 
-    }
-    #write {
-      background-color : gray;
-      border-radius: 3px;
-      width: 120px;
-      transition: background-color 0.3s ease-in;
-    }
-    #write:hover {
-      background-color: lightgray;
-    }
-    table {
-      font-size: 1em;
-    }
-  </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -37,7 +23,10 @@
 			</button>
 			
 			<div id="main-nav" class="collapse navbar-collapse">
-				<ul class="navbar-nav ml-auto">
+				<ul class ="navbar-nav ml-auto">
+          {% if request.session.user_id %}
+          <li><a href="#" class="nav-item nav-link">{{ request.session.user_id }} 님</a></li>
+          {% endif %}
 					<li><a href="#" class="nav-item nav-link">Notice</a></li>
           <li><a href="#" class="nav-item nav-link active">Board</a></li>
           <li><a href="/logout/" class="nav-item nav-link" id="logout">Logout</a></li>
@@ -45,8 +34,8 @@
 			</div>
     </div>
   </nav>
-  <div class="jumbotron text-center">
-    <h1>게시판</h1>
+  <div class="jumbotron text-center" style="font-size: medium; font-family:Montserrat;">
+    <h1>Board</h1>
     <br>
     <div id="user_type"></div>
   </div>
@@ -122,7 +111,7 @@
         // `)
         // addContent()
       }
-      $('#user_type').html('<h4> {{ request.session.user_id }} 님 환영합니다. </h4>')
+      // $('#user_type').html('<h4> {{ request.session.user_id }} 님 환영합니다. </h4>')
     })
 
 
