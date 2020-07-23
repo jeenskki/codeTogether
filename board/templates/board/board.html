@@ -98,13 +98,13 @@
               </tr>
             {% endif %}
           {% endfor %} `)
-      } else if ('{{ session.user_type }}' == 1) {
+      } else if ('{{ request.session.user_type }}' == 1) {
         $('#board_name').html(`
           <h3> 답변 대기 중인 질문 </h3> <br>
         `)
         $('#contents').append(`
           {% for c in b_list %}
-            {%if request.session.user_type != c.reply_chk %}
+            {%if c.reply_chk == 0 and c.content_type == 0 %}
               <tr>
                 <td> {{ c.content_id }} </td>
                 <td> {{ c.title }} </td>

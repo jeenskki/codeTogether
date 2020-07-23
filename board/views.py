@@ -1,29 +1,33 @@
 import json
+import os
 from django.shortcuts import render
 from .models import Board
 from django.http import HttpResponse, JsonResponse
 from django.views import View
+from sign.models import Accounts
 
 def write(request):
   return render(request, 'board/upload.html')
 
 # Create your views here.
 def writeBoard(request):
-  account = request.session.get('account_id')
+  user_id = request.session['user_id']
   title = request.POST.get('title')  
   content= request.POST.get('content')
-  img = request.POST.get('img')
-  content_type = request.POST.get('content_type')
+  img = request.FILES['img']
+  content_type = request.session['user_type']
   # account_id랑 content_type은 게시글 작성 버튼 누를 때 함께 넘겨야 함
-
-  # try:
+  
+  account = Accounts.objects.get(user_id=user_id)
   Board(
-    account = account_id,
+    user_id = account,
     title = title,
     content = content,
     img = img,
-    content_type = content.type
+    content_type = content_type
   ).save()
+
+  # 
 
   return HttpResponse(status= 200)
   # except Exception as e:
@@ -38,3 +42,6 @@ def boardView(request) :
 def q_stu(request):
   return render(request, 'board/q_stu.html')
  
+def save_session(request, user_id, user_type):
+  request.session['user_id'] = user_id
+  request.session['user_type'] = user_type
