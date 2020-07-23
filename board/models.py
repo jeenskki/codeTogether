@@ -7,7 +7,7 @@ class Board(models.Model):
   user_id = models.ForeignKey(Accounts, on_delete=models.CASCADE)
   title = models.CharField(max_length=100)
   content = models.TextField(max_length=2000)
-  img = models.ImageField(upload_to='./ans_img/%Y/%m/%d/', blank=True)
+  img = models.ImageField(upload_to='%Y/%m/%d/', blank=True)
   pub_date = models.DateTimeField(auto_now_add=True)
   mod_date = models.DateTimeField(auto_now=True)
   content_type = models.IntegerField(default=0)
