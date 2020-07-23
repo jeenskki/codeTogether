@@ -76,12 +76,14 @@
   </div>
 
   <script>
+    
+    
     $(document).ready(() => {
       if( !'{{ request.session.user_id }}') {
         alert("로그인 후 이용하세요")
         location.href = "/sign/login"
       }
-
+      
       if('{{ request.session.user_type }}' == 0) {
         $('#board_name').html(`
           <h3> 내가 올린 질문 </h3> <br>`)
@@ -120,11 +122,25 @@
       $('#user_type').html('<h4> {{ request.session.user_id }} 님 환영합니다. </h4>')
     })
 
+
+
+    $('#write').click((e) => {
+      if('{{request.session.user_type}}' == 0 ){
+        location.href = "/board/q_stu"
+        }
+      else{
+        location.href = "/board/write"
+        }
+    })
+
+
     $('#logout').click((e) => {
       if('{{ request.session.user_id }}') {
         alert('성공적으로 로그아웃 되었습니다.')
       }
     })
+
+
   </script>
 </body>
 </html>
