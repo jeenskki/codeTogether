@@ -1,0 +1,119 @@
+<!-- 답변 올리는 페이지 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<p>
+
+
+</p>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<style>
+    tr > th {
+        text-align : center;
+    }
+    nav {
+        height: 50px;
+        width: 1080px;
+        margin-left:15px;
+
+    
+    }
+</style>
+</head>
+<body>
+<div class="container">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<ul class="navbar-nav">
+    <ul class="navbar-nav"></ul>
+        <a class="navbar-brand" href="window.location.href='http://127.0.0.1:8000/" class="btn btn-dark"><h4>Coding Together</h4></a>
+    </ul>
+</nav>
+
+<div class="col-md-12">
+    <p></p>
+</div>
+
+<!-- ddd-->
+
+<div class="container">
+<table class="table table-bordered">
+    <tbody>
+    {% csrf_token %}   
+        <tr>
+            <th>제목 </th>
+            <td><input type="text" name="title" placeholder="제목을 입력하세요."  class="form-control" id='title' required/></td>
+        </tr>
+        <tr>
+            <th>내용 </th>
+            <td><textarea cols="10" rows='13' placeholder="내용을 입력하세요. " name="content" class="form-control" id='text' required></textarea></td>
+        </tr>
+        <tr>
+            <th>첨부파일 </th>
+            <td><input type="file" name="img" class="form-control"/></td>
+        </tr>
+            <td colspan="2" class="text-right">
+                <button class="btn btn-dark" type='submit' id ='submit'>등록</button>
+                <button class="btn btn-dark">글 목록으로 돌아가기</button>
+                <!-- <input type="button" value="답변 등록" onclick="sendData()" class="btn btn-dark"/> -->
+                <!-- <input type="button" value="글 목록으로 돌아가기 " class="btn btn-dark" onclick="javascript:location.href=''"/> -->
+                <!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
+                <a class="btn btn-default" type="reset"> reset </a>
+                <a class="btn btn-default" onclick="javascript:location.href='list.jsp'">글 목록으로...</a> -->
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>
+
+<script>
+    function goBack(){
+        window.history.back();
+    }
+    // submit이라는 id를 click했을 때 발생하는 이벤트 함수
+    $('button[type="submit"]').click((e) => {
+      var formData = new FormData();
+      formData.append('title', $('[name = title]').val());
+      formData.append('content', $('[name = content]').val());
+      formData.append('csrfmiddlewaretoken', $('[name = csrfmiddlewaretoken]').val());
+      formData.append('img', $('[name = img]')[0].files[0]);
+
+      $.ajax({
+        type: 'POST',
+        url: "/board/writeBoard/",
+        processData: false, // key1=value1&key2=value2.....
+        contentType: false,
+        data: formData,
+        // data: {
+        //   'title': $('[name = title]').val(),
+        //   'content': $('[name = content]').val(),
+        //   'csrfmiddlewaretoken': $('[name = csrfmiddlewaretoken]').val()
+        // },
+        success : (res) => {
+          if (res==0) {
+            alert("글이 등록되었습니다.")
+            location.href = "/board/"
+          } else {
+            alert("글이 등록되지 않았습니다.")
+          }
+        }
+      })
+    })
+// function sendData(){
+//         var title = ans_board.title.value;
+//         var content = ans_board.content.value;
+        
+//         if(!title || !content){
+//             alert("내용을 모두 입력해주세요.")
+//         }else{
+//             loginForm.submit();
+//         }
+//     }
+</script>

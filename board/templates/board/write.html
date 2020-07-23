@@ -35,6 +35,7 @@
           'title': $('[name = title]').val(),
           'content': $('[name = content]').val(),
           'img': $('[name = img]').val(),
+          'csrfmiddlewaretoken': $('[name = csrfmiddlewaretoken]').val()//csrftoken
         },
         success : (res) => {
           if (res==0) {
