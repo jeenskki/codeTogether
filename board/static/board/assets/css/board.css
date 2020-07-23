@@ -1,0 +1,118 @@
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800');
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+
+<link rel="stylesheet" href="../../static/board/assets/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff'); 
+    font-weight: normal; 
+    font-style: normal; }
+
+@font-face {
+    font-family: 'Hanna', serif;
+    font-weight: normal; 
+    font-style: normal; }
+    }
+@font-face {
+    font-family: 'Nanum Brush Script', serif;
+    font-weight: normal; 
+    font-style: normal; }
+    }
+
+@font-face {
+    font-family: 'Nanum Pen Script', serif;
+    font-weight: normal; 
+    font-style: normal; }
+    }
+
+@font-face {
+    font-family: 'Jeju Gothic', serif;
+    font-weight: normal; 
+    font-style: normal; }
+    }
+
+@font-face {
+    font-family: 'Nanum Gothic', serif;
+    font-weight: normal; 
+    font-style: normal; }
+    }
+@font-face {
+    font-family: 'Nanum Gothic Coding', serif;
+    font-style: normal;
+    font-weight: 400;
+}
+    
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/montserrat/Montserrat-Regular.ttf");
+    /* IE9 Compat Modes */ }
+    
+        
+@font-face {
+    font-family: 'Jeju Hallasan', serif;
+    font-weight: normal; 
+    font-style: normal; }
+}
+
+
+#contents {
+    font-size: 1rem;
+
+  }
+#write {
+    background-color : gray;
+    border-radius: 3px;
+    width: 120px;
+    transition: background-color 0.3s ease-in;
+}
+#write:hover {
+    background-color: lightgray;
+
+}
+table {
+    font-size: 1em;
+}
+
+h4 {
+    font-family:'Nanum Gothic Coding';
+    margin-bottom: 20px;
+    padding: 1px 1x;
+    color: rgb(226, 225, 225);
+    font-size: 1em;
+}
+
+body {
+    font-family: 'Jeju Gothic'; 
+}
+
+h1 {
+    font-family:'Jeju Gothic';
+    font-size: 5em;
+    margin-top: 20px;
+    margin-bottom: 1px;
+    text-shadow: 1.5em;
+    color: ivory;
+
+}
+.jumbotron.text-center {
+  font-family:'Jeju Gothic' ;
+  font-style: normal;
+  font-weight: 400;
+  background-image: url("../image/cod.jpg");
+  background-blend-mode:inherit
+  /* margin-top : 30px; */
+}
+
+.btn.float-right{
+  background-color: rgb(31, 31, 31);
+  color: rgb(233, 233, 233);
+}
