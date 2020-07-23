@@ -87,7 +87,7 @@
           <h3> 내가 올린 질문 </h3> <br>`)
           $('#contents').append(`
           {% for c in b_list %}
-            {%if request.session.user_type == c.content_type and request.session.user_id == c.account.user_id %}
+            {%if request.session.user_id == c.account.user_id %}
               <tr>
                 <td> {{ c.content_id }} </td>
                 <td> {{ c.title }} </td>
@@ -111,11 +111,14 @@
               </tr>
             {% endif %}
           {% endfor %} `)
-      } else {
-        $('#board_name').html(`
-          <h3> 관리자용 공지사항 페이지 </h3> <br>
-        `)
-        addContent()
+      } 
+      else {
+        alert('invalid access')
+        location.href = '/'
+        // $('#board_name').html(`
+        //   <h3> 관리자용 공지사항 페이지 </h3> <br>
+        // `)
+        // addContent()
       }
       $('#user_type').html('<h4> {{ request.session.user_id }} 님 환영합니다. </h4>')
     })

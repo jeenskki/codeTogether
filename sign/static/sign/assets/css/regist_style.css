@@ -9,6 +9,13 @@ list-type-ulli {
   margin: 0;
   padding: 0; }
 
+ /* 한글용 폰트 */ 
+ @font-face {
+  font-family: 'NEXON Lv1 Gothic OTF'; 
+  font-weight: normal; 
+  font-style: normal; 
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff'); 
+  }
 /* Montserrat-300 - latin */
 @font-face {
   font-family: 'Montserrat';
@@ -286,8 +293,14 @@ input, select {
   box-sizing: border-box;
   font-family: 'Montserrat';
   font-weight: 500;
-  font-size: 13px; }
-  input:focus, select:focus {
+  font-size: 13px; 
+} 
+
+.error {
+  border: 2px solid red;
+}
+
+input:focus, select:focus {
     border: 1px solid #ff6801; }
 
 label {
@@ -483,5 +496,10 @@ select {
   #reset {
     margin-right: 0px;
     margin-bottom: 10px; } }
+
+  #res {
+    font-family: 'NEXON Lv1 Gothic OTF';
+  }
+
 
 /*# sourceMappingURL=style.css.map */

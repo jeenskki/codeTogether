@@ -39,6 +39,7 @@
                         <div class="form-group">
                             <label for="re_passward">비밀번호 확인 :</label>
                             <input type="password" name="re_user_pw" id="chk_pw" required/>
+                            <p id="res"></p>
                         </div>
                         <div class="form-group">
                             <label for="name">이름 :</label>
@@ -49,15 +50,15 @@
                             <input type="email" name="email" id="email" required/>
                         </div>
                         <div class="form-radio">
-                            <label for="gender" class="radio-label">전문분야 : </label>
+                            <label for="lang" class="radio-label">전문분야 : </label>
                             <div class="form-radio-item">
-                                <input type="radio" name="gender" id="male" checked>
-                                <label for="male">Python</label>
+                                <input type="radio" name="lang" id="Python" required/>
+                                <label for="Python">Python</label>
                                 <span class="check"></span>
                             </div>
                             <div class="form-radio-item">
-                                <input type="radio" name="gender" id="female">
-                                <label for="female">Java</label>
+                                <input type="radio" name="lang" id="Java">
+                                <label for="Java">Java</label>
                                 <span class="check"></span>
                                 
                             </div>
@@ -79,21 +80,26 @@
     <script src="../../static/sign/assets/vendor/jquery/jquery.min.js"></script>
     <script src="../../static/sign/assets/js/main.js"></script>
     <script>
-        let check = chk_pw.addEventListener('change', (e) => {
+        let checker = chk_pw.addEventListener('change',(e) => {
             let pw = document.getElementById('pw')
             let chk_pw = document.getElementById('chk_pw')
-            let alert = document.getElementById('alert')
-            
+            let res = document.getElementById('res')
+
             if (pw.value == chk_pw.value) {
-                alert.innerHTML = "비밀번호가 일치합니다."
-                alert.style.color = 'green'
+                res.innerHTML = '비밀번호가 일치합니다.'
+                pw.classList.remove('error')
+                chk_pw.classList.remove('error')
+                res.style.color = 'green'
                 submit.disabled = false
             } else {
-                alert.innerHTML = "비밀번호가 일치하지 않습니다"
-                alert.style.color = 'red'
-                submit.disabled = true
+                res.innerHTML = '비밀번호가 일치하지 않습니다.'
+                pw.classList.add('error')
+                chk_pw.classList.add('error')
+                res.style.color = 'red'
+                submit.disbled = true
             }
         })
+        
     </script>   
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

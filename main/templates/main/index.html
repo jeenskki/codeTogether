@@ -51,36 +51,21 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-          <table class="table table-hover text-center" id="video">
+          <table class="table table-hover text-center" id="notice">
             <tr>
               <th>ID</th>
               <th>TITLE</th>
               <th>DATE</th>
             </tr>
-            <tr>
-              <a href="#">
-              </a>
-            </tr>
-            <tr>
-              <td><a href="#">1</a></td>
-              <td><a href="#">title</a></td>
-              <td><a href="#">date</a></td>
-            </tr>
-            <tr>
-              <td><a href="#">1</a></td>
-              <td><a href="#">title</a></td>
-              <td><a href="#">date</a></td>
-            </tr>
-            <tr>
-              <td><a href="#">1</a></td>
-              <td><a href="#">title</a></td>
-              <td><a href="#">date</a></td>
-            </tr>
-            <tr>
-              <td><a href="#">1</a></td>
-              <td><a href="#">title</a></td>
-              <td><a href="#">date</a></td>
-            </tr>
+          {% for c in b_list %}
+            {% if c.content_type == 2 %}
+              <tr>
+                <td>{{ c.content_id }}</td>
+                <td>{{ c.title }}</td>
+                <td>{{ c.pub_date|date:"Y-m-d" }}</td>
+              </tr>
+            {% endif %}
+          {% endfor %}
           </table>
         </div>
         <div class="col-md-6">

@@ -12,6 +12,7 @@ class Board(models.Model):
   mod_date = models.DateTimeField(auto_now=True)
   content_type = models.IntegerField(default=0)
   reply_chk = models.IntegerField(default=0)
+  # request_to_teacher = models.IntegerField()
 
   class Meta:
     db_table = 'board'
