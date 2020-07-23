@@ -96,13 +96,9 @@
 
 
     $('#write').click((e) => {
-      if('{{request.session.user_type}}' == 0 ){
-        location.href = "/board/q_stu"
-        }
-      else{
+      
         location.href = "/board/write"
-        }
-    })
+      })
 
 
     $('#logout').click((e) => {
