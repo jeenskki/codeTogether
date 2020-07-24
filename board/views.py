@@ -45,3 +45,10 @@ def q_stu(request):
 def save_session(request, user_id, user_type):
   request.session['user_id'] = user_id
   request.session['user_type'] = user_type
+
+def lesson(request) :
+  lesson_id = request.GET['lesson_id']
+  feed = Board.objects.filter(content_id=lesson_id)
+  return render(request, 'board/lesson.html', {
+    'contents': feed,
+  })

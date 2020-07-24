@@ -27,8 +27,8 @@
           {% if request.session.user_id %}
           <li><a href="#" class="nav-item nav-link">{{ request.session.user_id }} 님</a></li>
           {% endif %}
-					<li><a href="#" class="nav-item nav-link">Notice</a></li>
-          <li><a href="#" class="nav-item nav-link active">Board</a></li>
+					
+          <li><a href="/board/" class="nav-item nav-link active">Board</a></li>
           <li><a href="/logout/" class="nav-item nav-link" id="logout">Logout</a></li>
 				</ul>
 			</div>
@@ -72,58 +72,33 @@
         alert("로그인 후 이용하세요")
         location.href = "/sign/login"
       }
-      
-      if('{{ request.session.user_type }}' == 0) {
+      if('{{ request.session.user_type }}'){
         $('#board_name').html(`
-          <h3> 내가 올린 질문 </h3> <br>`)
+          <h3> 강의 게시판 </h3> <br>`)
           $('#contents').append(`
-          {% for c in b_list %}
-            {%if request.session.user_id == c.account.user_id %}
-              <tr>
-                <td> {{ c.content_id }} </td>
+            {% for c in b_list %}
+              {% if c.content_type == 1 %}
+              <tr class="feed" no="{{ c.content_id }}">
+                <td class="content_id"> {{ c.content_id }} </td>
                 <td> {{ c.title }} </td>
-                <td> {{ c.account.user_id }} </td>
+                <td> {{ c.user_id.user_id }} </td>
                 <td> {{ c.pub_date|date:"Y-m-d" }} </td>
               </tr>
-            {% endif %}
-          {% endfor %} `)
-      } else if ('{{ request.session.user_type }}' == 1) {
-        $('#board_name').html(`
-          <h3> 답변 대기 중인 질문 </h3> <br>
-        `)
-        $('#contents').append(`
-          {% for c in b_list %}
-            {%if c.reply_chk == 0 and c.content_type == 0 %}
-              <tr>
-                <td> {{ c.content_id }} </td>
-                <td> {{ c.title }} </td>
-                <td> {{ c.account.user_id }} </td>
-                <td> {{ c.pub_date|date:"Y-m-d" }} </td>
-              </tr>
-            {% endif %}
-          {% endfor %} `)
-      } 
+              {% endif %}
+            {% endfor %} `)}
+
       else {
         alert('invalid access')
         location.href = '/'
-        // $('#board_name').html(`
-        //   <h3> 관리자용 공지사항 페이지 </h3> <br>
-        // `)
-        // addContent()
       }
-      // $('#user_type').html('<h4> {{ request.session.user_id }} 님 환영합니다. </h4>')
     })
 
 
 
     $('#write').click((e) => {
-      if('{{request.session.user_type}}' == 0 ){
-        location.href = "/board/q_stu"
-        }
-      else{
+      
         location.href = "/board/write"
-        }
-    })
+      })
 
 
     $('#logout').click((e) => {
@@ -132,6 +107,19 @@
       }
     })
 
+    $(document).on('click', '.feed', function() {
+      let number = $(this).attr("no")
+      location.href = "/board/lesson?lesson_id=" + number
+      // $.ajax({
+      //   type: 'GET',
+      //   url: "/board/lesson/",
+      //   data: {
+      //     "lesson_id" : number, },
+      //   success: function(res) {
+      //     location.href = "board/lesson"
+      //   }
+      // })
+    })
 
   </script>
 </body>

@@ -17,8 +17,8 @@ def regist_user(request):
         user_name = request.POST['user_name']
         user_email = request.POST['email']
         user_type = request.POST['user_type']
-        if request.POST.get('field_main'): #signup_stu는 field_main이 없으므로
-            field_main = request.POST['field_main']
+        if request.POST.get('lang'): #signup_stu는 field_main이 없으므로
+            field_main = request.POST['lang']
         else:
             field_main = False
         try:
