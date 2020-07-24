@@ -41,57 +41,12 @@
 		<div class="container">
 			<h1>Coding Together</h1>
 			<p>아이들의 코딩을 보다 쉽게 가르치세요</p>
-			<a href="#content" class="button button-primary">회원이신가요?</a>
+			<a href="sign/login" class="button button-primary">LOGIN</a>
+			<a href="sign/login" class="button button-primary">SIGN UP</a>
 		</div>
 	</div>
 </header>
 
-<main>
-	<section id="content" class="content">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-          <table class="table table-hover text-center" id="notice">
-            <tr>
-              <th>ID</th>
-              <th>TITLE</th>
-              <th>DATE</th>
-            </tr>
-          {% for c in b_list %}
-            {% if c.content_type == 2 %}
-              <tr>
-                <td>{{ c.content_id }}</td>
-                <td>{{ c.title }}</td>
-                <td>{{ c.pub_date|date:"Y-m-d" }}</td>
-              </tr>
-            {% endif %}
-          {% endfor %}
-          </table>
-        </div>
-        <div class="col-md-6">
-          <table class="table table-hover text-center" id="video_list">
-            <tr>
-              <th>thumbnail</th>
-              <th>title</th>
-            </tr>
-            <tr>
-              <td><img src="#" alt="yt1" class="thumbnail"></td>
-              <td><a href="#">Lorem Ipsum</a></td>
-            </tr>
-            <tr>
-              <td><img src="#" alt="yt1" class="thumbnail"></td>
-              <td><a href="#">Lorem Ipsum</a></td>
-            </tr>
-            <tr>
-              <td><img src="#" alt="yt1" class="thumbnail"></td>
-              <td>Lorem Ipsum</td>
-            </tr>
-          </table>
-        </div>
-			</div>
-		</div>
-	</section>
-</main>
 <script>
   jQuery(function($) {
     $(window).on('scroll', function() {

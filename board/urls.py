@@ -11,6 +11,7 @@ urlpatterns = [
     path('q_stu/', views.q_stu),
     path('lesson/', views.lesson),
     path('stu/', views.board_stu),
+    path('youtube/', views.youtube),
 ]
 
 if settings.DEBUG: # new

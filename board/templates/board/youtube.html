@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../static/board/assets/fonts/material-icon/css/material-design-iconic-font.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/board/assets/css/board.css">
+  <link rel="stylesheet" href="fonts.googleapis.com/earlyaccess/jejugothic.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a href="/" class="navbar-brand">Coding Together</a>
+			<!-- /main/index.html -->
+			<button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#main-nav">
+        <span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<div id="main-nav" class="collapse navbar-collapse">
+				<ul class ="navbar-nav ml-auto">
+          {% if request.session.user_id %}
+          <li><a href="#" class="nav-item nav-link">{{ request.session.user_id }} 님</a></li>
+          {% endif %}
+					
+          <li><a href="/board/" class="nav-item nav-link active">Board</a></li>
+          <li><a href="/logout/" class="nav-item nav-link" id="logout">Logout</a></li>
+				</ul>
+			</div>
+    </div>
+  </nav>
+  <div class="jumbotron text-center" style="font-size: medium; font-family:Montserrat;">
+    <h1>Board</h1>
+    <br>
+    <div id="user_type"></div>
+  </div>
+
+  <div class="container-fluid text-center">
+    <div class="row">
+      <div class="col-md-8 float-center" style="margin: auto;">
+        <h4 class="text-left">유튜브 강의 링크
+          <span class="float-right">
+            &nbsp 학습할 언어 : 
+            <select id="lang">
+              <option value="null" selected></option>
+              <option value="Python">Python</option>
+              <option value="Java">Java</option>
+            </select>
+          </span>
+        </h4>
+        <table class="table table-hover" id="stu">
+          <thead class="table-sm">
+            <th width="10%">이미지</th>
+            <th width="60%">제목</th>
+            <th width="15%">채널명</th>
+            <th width="15%">게시일</th>
+          </thead>
+          <tbody class="yt_contents">
+            <tr>
+              <td colspan = 4><h3>우측 상단의 언어를 선택해주세요</h3></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $('#lang').change(function() {
+      console.log($('#lang').val())
+      if ($('#lang').val() == 'Java') {
+        $('.yt_contents').html('')
+        $('.yt_contents').append(`
+        {% for item in j_data.items %}
+              <tr class="videoId" item-id="{{ item.id.videoId }}">
+                <td><img src="{{ item.snippet.thumbnails.default.url }}"></td>
+                <td>{{ item.snippet.title }}</td>
+                <td>{{ item.snippet.channelTitle }}</td>
+                <td>{{ item.snippet.publishTime }}</td>
+              </tr>
+            {% endfor %}`)
+      } else if ($('#lang').val() == 'Python') {
+        $('.yt_contents').html('')
+        $('.yt_contents').append(`
+        {% for item in py_data.items %}
+              <tr class="videoId" item-id="{{ item.id.videoId }}">
+                <td><img src="{{ item.snippet.thumbnails.default.url }}"></td>
+                <td>{{ item.snippet.title }}</td>
+                <td>{{ item.snippet.channelTitle }}</td>
+                <td>{{ item.snippet.publishTime }}</td>
+              </tr>
+            {% endfor %}`)
+      } else {
+        $('.yt_contents').html(`
+          <tr>
+            <td colspan = 4><h3>우측 상단의 언어를 선택해주세요</h3></td>
+          </tr>
+        `)
+      }
+    })
+
+    $(document).on('click','.videoId', function() {
+      let id = $(this).attr('item-id')
+      console.log(id);
+      window.open('https://www.youtube.com/watch?v=' + id)
+    })
+  </script>
+</body>
+</html>
