@@ -10,7 +10,7 @@ urlpatterns = [
     path('writeBoard/',views.writeBoard),
     path('q_stu/', views.q_stu),
     path('lesson/', views.lesson),
-    path('stu', views.board_stu),
+    path('stu/', views.board_stu),
 ]
 
 if settings.DEBUG: # new

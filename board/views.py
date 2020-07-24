@@ -54,7 +54,7 @@ def lesson(request) :
   })
 
 def board_stu(request):
-  b_list = Board.objects.order_by('-content-id')
+  b_list = Board.objects.order_by('-content_id')
   return render(request, 'board/stu.html', {
-    'b_list': b_list,
+    'lists': b_list,
   })

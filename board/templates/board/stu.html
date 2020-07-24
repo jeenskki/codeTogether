@@ -48,12 +48,16 @@
             <th>작성자</th>
             <th>날짜</th>
           </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+          {%for list in lists %}
+            {% if list.content_type == 0 %}
+              <tr>
+                <td>{{ list.content_id }}</td>
+                <td>{{ list.title }}</td>
+                <td>{{ list.user_id.user_id }}</td>
+                <td>{{ list.pub_date|date:"Y-m-d" }}</td>
+              </tr>
+            {% endif %}
+          {% endfor %}
         </table>
         <button class="btn float-right">글쓰기</button>
       </div>
@@ -66,6 +70,16 @@
             <th>작성자</th>
             <th>날짜</th>
           </tr>
+          {% for list in lists %}
+            {% if list.content_type == 1 %}
+              <tr>
+                <td>{{ list.content_id }}</td>
+                <td>{{ list.title }}</td>
+                <td>{{ list.user_id.user_id }}</td>
+                <td>{{ list.pub_date|date:"Y-m-d" }}</td>
+              </tr>
+            {% endif %}
+          {% endfor %}
         </table>
       </div>
     </div>
