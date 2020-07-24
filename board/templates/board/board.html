@@ -41,48 +41,60 @@
   </div>
 
   <div class="container-fluid text-center">
-    <div class="col-md-8" style="margin: auto;">
-      <div id="board_name"></div>
-      <table class="table table-hover" id="contents">
-        <thead class="table-sm">
-          <th width="8%">번호</th>
-          <th width="55%">제목</th>
-          <th width="25%">글쓴이</th>
-          <th width="12%">게시일</th>
-        </thead>
-        {% if b_list|length == 0 %}
-          <tr>
-            <td colspan=4>
-              <div style="font-size: 1rem; height: 80px;">
-                <p>게시글이 존재하지 않습니다.</p>
-              </div>
-            </td>
-          </tr>
-        {% endif %}
-      </table>
-      <button type="button" class="btn float-right" id="write">글쓰기</button>
+    <div class="row">
+      <div class="col-md-6"">
+        <h4 class="text-left">학생 질문 게시판</h4>
+        <table class="table table-hover" id="stu">
+          <thead class="table-sm">
+            <th width="10%">번호</th>
+            <th width="60%">제목</th>
+            <th width="15%">글쓴이</th>
+            <th width="15%">게시일</th>
+          </thead>
+        </table>
+      </div>
+      <div class="col-md-6"">
+        <h4 class="text-left">강의 게시판</h4>
+        <table class="table table-hover" id="contents">
+          <thead class="table-sm">
+            <th width="10%">번호</th>
+            <th width="60%">제목</th>
+            <th width="15%">글쓴이</th>
+            <th width="15%">게시일</th>
+          </thead>
+        </table>
+        <button type="button" class="btn float-right" id="write">글쓰기</button>
+      </div>
     </div>
   </div>
 
   <script>
-    
+    if(!'{{ request.session.user_id }}') {
+      alert("로그인 후 이용하세요")
+      location.href = "/sign/login"
+    }
     
     $(document).ready(() => {
-      if( !'{{ request.session.user_id }}') {
-        alert("로그인 후 이용하세요")
-        location.href = "/sign/login"
-      }
-      if('{{ request.session.user_type }}'){
-        $('#board_name').html(`
-          <h3> 강의 게시판 </h3> <br>`)
-          $('#contents').append(`
-            {% for c in b_list %}
-              {% if c.content_type == 1 %}
-              <tr class="feed" no="{{ c.content_id }}">
-                <td class="content_id"> {{ c.content_id }} </td>
-                <td> {{ c.title }} </td>
-                <td> {{ c.user_id.user_id }} </td>
-                <td> {{ c.pub_date|date:"Y-m-d" }} </td>
+      if('{{ request.session.user_type }}' == 1){
+        $('#contents').append(`
+        {% for c in b_list %}
+        {% if c.content_type == 1 %}
+        <tr class="feed" no="{{ c.content_id }}">
+          <td class="content_id"> {{ c.content_id }} </td>
+          <td> {{ c.title }} </td>
+          <td> {{ c.user_id.user_id }} </td>
+          <td> {{ c.pub_date|date:"Y-m-d" }} </td>
+              </tr>
+              {% endif %}
+            {% endfor %} `)
+        $('#stu').append(`
+        {% for c in b_list %}
+        {% if c.content_type == 0 %}
+        <tr class="qna" no="{{ c.content_id }}">
+          <td class="content_id"> {{ c.content_id }} </td>
+          <td> {{ c.title }} </td>
+          <td> {{ c.user_id.user_id }} </td>
+          <td> {{ c.pub_date|date:"Y-m-d" }} </td>
               </tr>
               {% endif %}
             {% endfor %} `)}
@@ -96,11 +108,8 @@
 
 
     $('#write').click((e) => {
-      
         location.href = "/board/write"
       })
-
-
     $('#logout').click((e) => {
       if('{{ request.session.user_id }}') {
         alert('성공적으로 로그아웃 되었습니다.')
@@ -110,15 +119,10 @@
     $(document).on('click', '.feed', function() {
       let number = $(this).attr("no")
       location.href = "/board/lesson?lesson_id=" + number
-      // $.ajax({
-      //   type: 'GET',
-      //   url: "/board/lesson/",
-      //   data: {
-      //     "lesson_id" : number, },
-      //   success: function(res) {
-      //     location.href = "board/lesson"
-      //   }
-      // })
+    })
+    $(document).on('click', '.qna', function() {
+      let number = $(this).attr("no")
+      location.href = "/board/q_stu?q_id=" + number
     })
 
   </script>
