@@ -52,3 +52,9 @@ def lesson(request) :
   return render(request, 'board/lesson.html', {
     'contents': feed,
   })
+
+def board_stu(request):
+  b_list = Board.objects.order_by('-content-id')
+  return render(request, 'board/stu.html', {
+    'b_list': b_list,
+  })
