@@ -61,8 +61,11 @@ def board_stu(request):
   })
 
 def youtube(request) :
-  py_raw = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&q=파이썬&key=AIzaSyB1bUXFvdnJQb1gjpb7eDqPnZhXKxa7qm0')
-  j_raw = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&q=자바&key=AIzaSyB1bUXFvdnJQb1gjpb7eDqPnZhXKxa7qm0')
+  py_raw = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&q=파이썬&key=AIzaSyBZTM4rb30fK81cZ2LCsm__-luFUh6mzB4')
+  j_raw = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&q=자바&key=AIzaSyBZTM4rb30fK81cZ2LCsm__-luFUh6mzB4')
+  py_data = ''
+  j_data = ''
+  print(py_raw.status_code)
   if py_raw.status_code == 200 :
     py_raw.encoding = "utf-8"
     py_data = py_raw.json()

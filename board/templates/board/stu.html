@@ -29,7 +29,7 @@
           {% if request.session.user_id %}
           <li><a href="#" class="nav-item nav-link">{{ request.session.user_id }} 님</a></li>
           {% endif %}
-					
+					<li><a href="/board/youtube" class="nav-item nav-link" id="logout">추천강의</a></li>
           <li><a href="/board/" class="nav-item nav-link active">Board</a></li>
           <li><a href="/logout/" class="nav-item nav-link" id="logout">Logout</a></li>
 				</ul>
@@ -45,7 +45,7 @@
   <div class="container-fluid text-center">
     <div class="row">
       <div class="col-md-6">
-        <h4 class="text-left">내가 쓴 질문</h4>
+        <h4 class="text-left">Question</h4>
         <table class="table table-hover">
           <tr>
             <th width="15%">번호</th>
@@ -69,7 +69,7 @@
         <button class="btn float-right" id = "write">글쓰기</button>
       </div>
       <div class="col-md-6">
-        <h4 class="text-left">추천 강의
+        <h4 class="text-left">Lecture
           <span class="float-right"> 희망 언어
             <select id="lang">
               <option value="Java">Java</option>
@@ -100,6 +100,9 @@
           </tbody>
         </table>
       </div>
+      <div class="col-md-12">
+        <button id= 'youtube' style = "margin: auto;" type="button">추천 강의</button>
+      </div>
     </div>
   </div>
 
@@ -120,6 +123,9 @@
     $(document).on('click', '.qna', function() {
       let number = $(this).attr("no")
       location.href = "/board/lesson?lesson_id=" + number
+    })
+    $('#youtube').click((e) => {
+      location.href = "/board/youtube"
     })
   </script>
 </body>
