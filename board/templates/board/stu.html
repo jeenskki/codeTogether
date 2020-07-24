@@ -56,7 +56,7 @@
           <tbody>
             {%for list in lists %}
               {% if list.content_type == 0 %}
-                <tr>
+                <tr class ="feed" no = "{{ list.content_id}}">
                   <td>{{ list.content_id }}</td>
                   <td>{{ list.title }}</td>
                   <td>{{ list.user_id.user_id }}</td>
@@ -66,7 +66,7 @@
             {% endfor %}
           </tbody>
         </table>
-        <button class="btn float-right">글쓰기</button>
+        <button class="btn float-right" id = "write">글쓰기</button>
       </div>
       <div class="col-md-6">
         <h4 class="text-left">추천 강의
@@ -89,7 +89,7 @@
           <tbody>
             {% for list in lists %}
               {% if list.content_type == 1 %}
-                <tr>
+                <tr class = "qna" no = "{{ list.content_id}}">
                   <td>{{ list.content_id }}</td>
                   <td>{{ list.title }}</td>
                   <td>{{ list.user_id.user_id }}</td>
@@ -113,6 +113,14 @@
       }
     })
 
+    $(document).on('click', '.feed', function() {
+      let number = $(this).attr("no")
+      location.href = "/board/lesson?lesson_id=" + number
+    })
+    $(document).on('click', '.qna', function() {
+      let number = $(this).attr("no")
+      location.href = "/board/lesson?lesson_id=" + number
+    })
   </script>
 </body>
 </html>

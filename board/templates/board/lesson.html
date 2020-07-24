@@ -35,7 +35,7 @@
     </div>
   </nav>
   <div class="jumbotron text-center" style="font-size: medium; font-family:Montserrat;">
-    <h1>Board</h1>
+    <h1></h1>
     <br>
     <div id="user_type"></div>
   </div>
@@ -45,15 +45,16 @@
     {% for c in contents %}
         <div class="col-md-8">
             <span>
-                <h4>{{c.title}}</h4></span>
-            <div>
-                <p>{{c.content}}</p>
-            </div>
+                <h4>제목 : {{c.title}}</h4></span>
+
             {% if c.img %}
             <div>
                 <img src="/ans_img/{{c.img}}" />
             </div>
             {% endif %}
+            <div>
+              <p>내용 :{{c.content}}</p>
+          </div>
         </div>
     {% endfor %}
   </div>
